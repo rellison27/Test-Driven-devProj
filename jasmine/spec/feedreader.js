@@ -103,8 +103,9 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+        //Callbacks should be used to ensure that feeds are loaded before they are tested
         beforeEach(function(done) {
-            loadFeed(0, done);
+          loadFeed(0, done);
         });
         it('changes when feed is loaded', function(done) {
             loadFeed(3, function() {
