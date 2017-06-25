@@ -104,9 +104,9 @@ $(function() {
           loadFeed(0, done);
         });
         it('changes when feed is loaded', function(done) {
-          var accessFeed = $('.feed');
+          var accessFeed = $('.feed').html();
             loadFeed(3, function() {
-                expect($('.feed').html()).not.toBe(accessFeed);
+                expect($('.feed').html()).not.toEqual(accessFeed);
                 done();
             });
         });
