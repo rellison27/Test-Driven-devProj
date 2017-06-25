@@ -69,10 +69,10 @@ $(function() {
          * clicked and does it hide when clicked again.
          */
         it('Toggles when clicked', function() {
-                menuClicker.click();
-                expect($('body').hasClass('menu-hidden')).toBe(false);
-                menuClicker.click();
-                expect($('body').hasClass('menu-hidden')).toBe(true);
+            menuClicker.click();
+            expect($('body').hasClass('menu-hidden')).toBe(false);
+            menuClicker.click();
+            expect($('body').hasClass('menu-hidden')).toBe(true);
         });
     });
     /* Write a new test suite named "Initial Entries" */
@@ -101,10 +101,10 @@ $(function() {
          */
         //Callbacks should be used to ensure that feeds are loaded before they are tested
         beforeEach(function(done) {
-          loadFeed(0, done);
+            loadFeed(0, done);
         });
         it('changes when feed is loaded', function(done) {
-          var accessFeed = $('.feed').html();
+            var accessFeed = $('.feed').html();
             loadFeed(3, function() {
                 expect($('.feed').html()).not.toEqual(accessFeed);
                 done();
