@@ -33,7 +33,7 @@ $(function() {
         it('URL defined', function() {
             for (var i = 0; i < allFeeds.length; i++) {
                 expect(allFeeds[i].url).toBeDefined();
-                expect(allFeeds[i].url).not.toBe(0);
+                expect(allFeeds[i].url.length).not.toBe(0);
             }
         });
 
@@ -45,7 +45,7 @@ $(function() {
         it('Name defined', function() {
             for (var i = 0; i < allFeeds.length; i++) {
                 expect(allFeeds[i].name).toBeDefined();
-                expect(allFeeds[i].name).not.toBe(0);
+                expect(allFeeds[i].name.length).not.toBe(0);
             }
         });
     });
@@ -69,13 +69,10 @@ $(function() {
          * clicked and does it hide when clicked again.
          */
         it('Toggles when clicked', function() {
-            if (menuClicker) {
                 menuClicker.click();
                 expect($('body').hasClass('menu-hidden')).toBe(false);
-            } else {
                 menuClicker.click();
                 expect($('body').hasClass('menu-hidden')).toBe(true);
-            }
         });
     });
     /* Write a new test suite named "Initial Entries" */
@@ -92,13 +89,12 @@ $(function() {
         });
 
         it('has atleast a single entry', function() {
-            expect($('.entry').length).toBeGreaterThan(0);
+            expect($('.entry .feed').length).not.toBeLessThan(0);
         });
 
     });
     /* Write a new test suite named "New Feed Selection" */
     describe('New Feed Selection', function() {
-        var accessFeed = $('.feed').html();
         /* Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
@@ -108,6 +104,7 @@ $(function() {
           loadFeed(0, done);
         });
         it('changes when feed is loaded', function(done) {
+          var accessFeed = $('.feed');
             loadFeed(3, function() {
                 expect($('.feed').html()).not.toBe(accessFeed);
                 done();
